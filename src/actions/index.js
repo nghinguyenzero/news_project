@@ -55,10 +55,10 @@ export const actAddToHistory = (article) => {
     };
 }
 
-export const actSearchByKey = (key) => {
+export const actSearchByKey = (keyword) => { console.log('keyword',keyword);
     return {
         type: Types.SEARCH_BY_KEY,
-        key
+        keyword
     }
 }
 

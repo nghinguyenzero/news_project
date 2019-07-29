@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { actAddToHistory } from "../actions/index"
+import Moment from 'react-moment';
 
 class Article extends Component {
     render() {
@@ -20,9 +21,11 @@ class Article extends Component {
                         <p className="mbr-text mbr-fonts-style display-7 description">
                              {article.description}
                         </p>
+                        <Moment to={article.publishedAt}></Moment> <br></br>
                         <strong className="mbr-text mbr-fonts-style display-7">
-                            {article.source.name}
+                            source: {article.source.name}  
                         </strong>
+                        
                     </div>
                     <div className="mbr-section-btn text-center">
                         <Link

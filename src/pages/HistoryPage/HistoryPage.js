@@ -6,6 +6,7 @@ import ArticleViewed from './../../components/ArticleViewed';
 class HistoryPage extends Component {
   render() {
     var { history } = this.props;
+    history.sort( (a, b) => b.timeView - a.timeView);
     return (
       <div>
         <ArticlesViewed>

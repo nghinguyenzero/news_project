@@ -14,18 +14,18 @@ class Search extends Component {
     }
 
     render() {
-        var { key } = this.props;
+        var { keyword } = this.props;
         return (
             <input className="form-control mb-10" type="text" id="myInput" placeholder="Search for key..." title="Type in a name"
-                value={key}
-                name='key'
+                value={keyword}
+                name='keyword'
                 onChange={this.onChange}
             ></input>
         );
     }
 }
 const mapStateToProps = state => { 
-    return { key: state.key }
+    return { keyword: state.keyword }
 }
 
 const mapDispatchToProps = (dispatch, props) => {
