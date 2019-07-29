@@ -1,19 +1,21 @@
 import * as Types from './../constants/ActionTypes';
+
 var data = JSON.parse(localStorage.getItem('HISTORY'));
 var initialState = data ? data : [];
 const history = (state = initialState, action) => {
-    var { news } = action;
+    var { article } = action;
     var index = -1;
     switch (action.type) {
-        case Types.FETCH_HISTORY: console.log(action);
-            index = findNewsInHistory(state, news);
+            case Types.FETCH_HISTORY:  
+            index = findNewsInHistory(state, article);
             var today = new Date();
             var timeView = today.getTime()
             if (index !== -1) {
                 state[index].timeView = timeView;
             } else {
                 state.push({
-                    news,
+                    title: article.title,
+                    index: article.index,
                     timeView
                 });
             }
@@ -21,14 +23,14 @@ const history = (state = initialState, action) => {
             return [...state];
         default: return [...state];
     }
-};
+}; 
 
-const findNewsInHistory = (history, news) => {
+const findNewsInHistory = (history, article) => {  
     var index = -1;
     var n = history.length;
     if (n > 0) {
         for (let i = 0; i < n; i++) {
-            if (history[i].news.id === news.id) {
+            if (history[i].index === article.index) {
                 index = i;
                 break;
             }

@@ -1,1 +1,1 @@
-export const API_URL = 'http://5d3d8066139f42001453224b.mockapi.io';
+export const API_URL = 'https://newsapi.org/v2/top-headlines?country=us&apiKey=2fe726b64fc042b6a1a6907c4d6b9276';

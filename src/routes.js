@@ -2,8 +2,7 @@ import React from "react";
 import HomePage from "./pages/HomePage/HomePage";
 import NotFoundPage from "./pages/NotFoundPage/NotFoundPage";
 import HistoryPage from "./pages/HistoryPage/HistoryPage";
-import NewsPage from "./pages/NewsPage/NewsPage";
-
+import ArticlePage from "./pages/ArticlePage/ArticlePage";
 
 const routes =[
     {
@@ -18,9 +17,9 @@ const routes =[
         main: () =><HistoryPage/>
     },
     {
-        path:'/newsList/:id',
+        path:'/articles/:id',
         exact: true,
-        main: ({match, history}) =><NewsPage match={match} history={history}/>
+        main: ({match, history}) =><ArticlePage match={match} history={history}/>
     },
     {
         path:'',

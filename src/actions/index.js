@@ -1,43 +1,59 @@
 import * as Types from './../constants/ActionTypes';
 import callApi from "./../utils/apiCaller";
 
-export const actFetchNewsListRequest = () => {
+/**
+ * 
+ * Call API get Articles list
+ */
+export const actFetchArticlesRequest = () => {
     return (dispatch) => {
-        return callApi('newsList', 'GET', null).then(res => {
-            dispatch(actFetchNewsList(res.data));
+        return callApi('', 'GET', null).then(res => {
+            dispatch(actFetchArticles(res.data.articles));
         })
     };
-
 }
-
-export const actFetchNewsList = (newsList) => {
+export const actFetchArticles = (articles) => {
     return {
-        type: Types.FETCH_NEWS_LIST,
-        newsList
+        type: Types.FETCH_ARTICLES,
+        articles
     }
 }
 
-export const actGetNewsRequest = (id) => { 
-    return (dispatch) => {
-        return callApi(`newsList/${id}`, 'GET', null).then(res => {
-             dispatch(actGetNews(res.data));
+const findArticle = (articles, id) => {
+    var data = null;
+    if (articles.length > 0) {
+        articles.forEach((item) => {
+            if (item.index === parseInt(id)) {
+                data = item;
+            }
         });
+    }
+    return data
+}
+
+export const actGetArticleRequest = (articles, id) => {
+    return (dispatch) => {  
+        var data = findArticle(articles, id);
+        if(data != null) {
+            return dispatch(actGetArticle(data));
+        }
+    };
+
+}
+
+export const actGetArticle = (article) => {
+    return {
+        type: Types.GET_ARTICLE,
+        article
     };
 }
 
-export const actGetNews = (news) => {
-    return {
-        type: Types.GET_NEWS_BY_ID,
-        news
-    };
-} 
-
-export const actAddToHistory = (news) => {
+export const actAddToHistory = (article) => {
     return {
         type: Types.FETCH_HISTORY,
-        news
+        article
     };
-} 
+}
 
 export const actSearchByKey = (key) => {
     return {

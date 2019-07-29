@@ -1,35 +1,35 @@
 import React, { Component } from 'react';
-import NewsList from './../../components/NewsList';
-import News from './../../components/News';
+import Articles from './../../components/Articles';
+import Article from './../../components/Article';
 import Search from './../../components/Search';
 import { connect } from "react-redux";
-import { actFetchNewsListRequest } from "./../../actions/index";
+import { actFetchArticlesRequest } from "./../../actions/index";
 
 class HomePage extends Component {
 
   componentDidMount() {
-      this.props.fetchNewsList();
+    this.props.fetchArticles();
   }
-  
+
   render() {
-    var { newsList } = this.props;
+    var { articles } = this.props;
     return (
-      <div className= "container">
-        <Search/>
-          <NewsList>
-            {this.showNewsList(newsList)}
-          </NewsList>
+      <div className="container">
+        <Search />
+        <Articles>
+          {this.showNewsList(articles)}
+        </Articles>
       </div>
     );
   }
 
-  showNewsList = (newsList) => {
+  showNewsList = (articles) => {
     var result = null;
-    if (newsList.length > 0) {
-      result = newsList.map((news, index) => {
-        return (<News
+    if (articles.length > 0) {
+      result = articles.map((article, index) => {
+        return (<Article
           key={index}
-          news={news}
+          article={article}
           index={index}
         />)
       })
@@ -38,10 +38,9 @@ class HomePage extends Component {
   }
 }
 
-const mapStateToProps = state => { 
-  return { 
-    newsList: state.newsList 
-    // key: state.key 
+const mapStateToProps = state => {
+  return {
+    articles: state.articles
   };
 }
 
@@ -49,10 +48,9 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = (dispatch, props) => {
   return {
-    fetchNewsList : () => {
-      dispatch(actFetchNewsListRequest());
+    fetchArticles: () => {
+      dispatch(actFetchArticlesRequest());
     }
-
   }
 }
 export default connect(mapStateToProps, mapDispatchToProps)(HomePage);

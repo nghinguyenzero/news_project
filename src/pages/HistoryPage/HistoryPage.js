@@ -1,41 +1,36 @@
 import React, { Component } from 'react';
 import { connect } from "react-redux";
-import HistoryList from './../../components/HistoryList';
-import HistoryItem from './../../components/HistoryItem';
-
-
+import ArticlesViewed from './../../components/ArticlesViewed';
+import ArticleViewed from './../../components/ArticleViewed';
 
 class HistoryPage extends Component {
   render() {
     var { history } = this.props;
-    console.log(history);
     return (
       <div>
-          <HistoryList>
-            {this.showHistory(history)}
-          </HistoryList>
+        <ArticlesViewed>
+          {this.showHistory(history)}
+        </ArticlesViewed>
       </div>
-
     );
   }
+
   showHistory = (history) => {
     var result = null;
     if (history.length > 0) {
-      result = history.map((news, index) => {
-        return (<HistoryItem
+      result = history.map((article, index) => {
+        return (<ArticleViewed
           key={index}
-          news={news}
+          article={article}
           index={index}
         />)
       })
     }
     return result;
-
   }
 }
 const mapStateToProps = state => {
   return { history: state.history }
 }
-
 
 export default connect(mapStateToProps, null)(HistoryPage);
