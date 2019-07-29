@@ -1,7 +1,7 @@
 import * as Types from '../constants/ActionTypes';
 
 var initialState = {};
-const article = (state = initialState, action) => {  console.log('action.article',action);
+const article = (state = initialState, action) => {  
     switch (action.type) {
         case Types.GET_ARTICLE:
             return action.article;

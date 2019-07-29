@@ -4,10 +4,10 @@ import { connect } from "react-redux";
 import { actAddToHistory } from "../actions/index"
 import Moment from 'react-moment';
 
-class Article extends Component {
+class ArticleContainer extends Component {
     render() {
 
-        var { article } = this.props;
+        var {article} = this.props;
         return (
             <div className="card p-3 col-12 col-md-6 col-lg-4">
                 <div className="card-wrapper mt-mb-10 ">
@@ -19,13 +19,13 @@ class Article extends Component {
                             {article.title}
                         </h4>
                         <p className="mbr-text mbr-fonts-style display-7 description">
-                            {article.description}
+                             {article.description}
                         </p>
                         <Moment to={article.publishedAt}></Moment> <br></br>
                         <strong className="mbr-text mbr-fonts-style display-7">
-                            source: {article.source.name}
+                            source: {article.source.name}  
                         </strong>
-
+                        
                     </div>
                     <div className="mbr-section-btn text-center">
                         <Link
@@ -56,4 +56,4 @@ const mapDispatchToProps = (dispatch, props) => {
     }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Article);
+export default connect(mapStateToProps, mapDispatchToProps)(ArticleContainer);

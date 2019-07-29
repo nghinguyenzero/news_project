@@ -5,16 +5,16 @@ import { actGetArticleRequest } from "../../actions/index";
 
 class ArticlePage extends Component {
 
-  componentDidMount() { 
-    var { match, articles } = this.props; 
+  componentDidMount() {
+    var { match, articles } = this.props;
     if (match) {
       var id = match.params.id;
-      this.props.onGetArticle(articles,id);
+      this.props.onGetArticle(articles, id);
     }
   }
 
   render() {
-    var { article } = this.props;  console.log(1111111111111,this.props);
+    var { article } = this.props;
     var date = new Date(article.publishedAt).toLocaleString();
     return (
       <div className="container">
@@ -22,7 +22,7 @@ class ArticlePage extends Component {
           <div className="col-lg-12">
             <h1 className="mt-4">{article.title}</h1>
             <div className="lead">
-              {article.author} 
+              {article.author}
             </div>
             <hr></hr>
             <div>Posted on {date}</div>
@@ -39,7 +39,7 @@ class ArticlePage extends Component {
   }
 }
 
-const mapStateToProps = state => { 
+const mapStateToProps = state => {
   return { article: state.article, articles: state.articles }
 }
 

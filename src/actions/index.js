@@ -1,10 +1,6 @@
 import * as Types from './../constants/ActionTypes';
 import callApi from "./../utils/apiCaller";
 
-/**
- * 
- * Call API get Articles list
- */
 export const actFetchArticlesRequest = () => {
     return (dispatch) => {
         return callApi('', 'GET', null).then(res => {
@@ -38,7 +34,6 @@ export const actGetArticleRequest = (articles, id) => {
             return dispatch(actGetArticle(data));
         }
     };
-
 }
 
 export const actGetArticle = (article) => {
@@ -55,7 +50,7 @@ export const actAddToHistory = (article) => {
     };
 }
 
-export const actSearchByKey = (keyword) => { console.log('keyword',keyword);
+export const actSearchByKey = (keyword) => { 
     return {
         type: Types.SEARCH_BY_KEY,
         keyword

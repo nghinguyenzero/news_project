@@ -3,13 +3,14 @@ import React, { Component } from 'react';
 import { connect } from "react-redux";
 import { actSearchByKey } from "./../actions/index";
 
-class Search extends Component {
+
+class SearchContainer extends Component {
 
     onChange = (e) => {
         var target = e.target;
         var name = target.name;
         var value = target.value;
-        this.props.onSearchByKey({ [name]: value });
+        this.props.onSearchByKey({[name]: value});
     }
 
     render() {
@@ -23,8 +24,7 @@ class Search extends Component {
         );
     }
 }
-
-const mapStateToProps = state => {
+const mapStateToProps = state => { 
     return { keyword: state.keyword }
 }
 
@@ -36,4 +36,4 @@ const mapDispatchToProps = (dispatch, props) => {
     }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Search);
+export default connect(mapStateToProps, mapDispatchToProps)(SearchContainer);

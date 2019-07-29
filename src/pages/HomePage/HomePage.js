@@ -5,16 +5,28 @@ import Search from './../../components/Search';
 import { connect } from "react-redux";
 import { actFetchArticlesRequest, actSearchByKey } from "./../../actions/index";
 import { filter } from 'lodash';
+import {NUMB_OF_ARTICLES} from "./../../constants/ActionTypes";
 
 class HomePage extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      visible: NUMB_OF_ARTICLES,
+    };
+  }
+
+  loadMore() {
+    this.setState((prev) => {
+      return { visible: prev.visible + NUMB_OF_ARTICLES };
+    });
+  }
 
   componentDidMount() {
     this.props.fetchArticles();
   }
 
   render() {
-    var { articles, keyword } = this.props; 
-
+    var { articles, keyword } = this.props;
     if (keyword) {
       articles = filter(articles, (article) => {
         return article.title.toLowerCase().indexOf(keyword) !== -1;
@@ -27,29 +39,35 @@ class HomePage extends Component {
       return d - c;
     });
 
-  return(
-      <div className = "container" >
-      <Search />
-      <Articles>
-        {this.showNewsList(articles)}
-      </Articles>
+    return (
+      <div className="container" >
+        <Search />
+        <Articles>
+          {this.showNewsList(articles.slice(0, this.state.visible))}
+        </Articles>
+        <div className="text-center mb-10 mt-10">
+          {this.state.visible < articles.length &&
+            <button onClick={() => this.loadMore()} type="button" className="load-more btn btn-large btn-block btn-primary">Load more</button>
+          }
+        </div>
       </div>
     );
+
   }
 
-showNewsList = (articles) => {
-  var result = null;
-  if (articles.length > 0) {
-    result = articles.map((article, index) => {
-      return (<Article
-        key={index}
-        article={article}
-        index={index}
-      />)
-    })
+  showNewsList = (articles) => {
+    var result = null;
+    if (articles.length > 0) {
+      result = articles.map((article, index) => {
+        return (<Article
+          key={index}
+          article={article}
+          index={index}
+        />)
+      })
+    }
+    return result;
   }
-  return result;
-}
 }
 
 const mapStateToProps = state => {
@@ -68,4 +86,5 @@ const mapDispatchToProps = (dispatch, props) => {
     }
   };
 }
+
 export default connect(mapStateToProps, mapDispatchToProps)(HomePage);

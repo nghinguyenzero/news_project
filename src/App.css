@@ -59,13 +59,12 @@
 }
 
 .description {
-  /* white-space: pre-line;  */
-  /* width: 00px;  */
+  white-space: pre-line; 
   height: 100px;
 
   overflow: hidden;
-  /* text-overflow: ellipsis;  */
-  /* border: 1px solid #000000; */
+  text-overflow: ellipsis; 
+  border: 1px solid #000000;
 }
  .h-200{
    height: 200px;
@@ -75,6 +74,11 @@
    margin-top: 20px;
    margin-bottom: 20px;
  }
+
  .h-50{
   height: 50px;
+ }
+
+ .text-center {
+  text-align:center;
  }
