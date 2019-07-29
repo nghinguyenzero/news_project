@@ -41,7 +41,7 @@ class HomePage extends Component {
 const mapStateToProps = state => { 
   return { 
     newsList: state.newsList 
-    key: state.key 
+    // key: state.key 
   };
 }
 
