@@ -6,7 +6,6 @@ import Moment from 'react-moment';
 
 class Article extends Component {
     render() {
-
         var { article } = this.props;
         return (
             <div className="card p-3 col-12 col-md-6 col-lg-4">
