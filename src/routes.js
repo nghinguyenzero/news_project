@@ -3,6 +3,7 @@ import HomePage from "./pages/HomePage/HomePage";
 import NotFoundPage from "./pages/NotFoundPage/NotFoundPage";
 import HistoryPage from "./pages/HistoryPage/HistoryPage";
 import ArticlePage from "./pages/ArticlePage/ArticlePage";
+import ProductPage from "./pages/ProductPage/ProductPage";
 
 const routes =[
     {
@@ -15,6 +16,11 @@ const routes =[
         path:'/history',
         exact: true,
         main: () =><HistoryPage/>
+    },
+    {
+        path:'/products',
+        exact: true,
+        main: () =><ProductPage/>
     },
     {
         path:'/articles/:id',

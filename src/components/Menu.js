@@ -11,6 +11,11 @@ const menu = [
     name: 'History',
     to: '/history',
     exact: false
+  },
+  {
+    name: 'Cart Product',
+    to: '/products',
+    exact: false
   }
 ];
 

@@ -6,5 +6,12 @@ export const SEARCH_BY_KEY = 'SEARCH_BY_KEY';
 export const NUMB_OF_ARTICLES = 8 ;
 
 
+export const ADD_TO_CART = 'ADD_TO_CART';
+export const DELETE_PRODUCT_IN_CART = 'DELETE_PRODUCT_IN_CART';
+export const CHANGE_MESSAGE = 'CHANGE_MESSAGE';
+export const UPDATE_PRODUCT_IN_CART = 'UPDATE_PRODUCT_IN_CART';
+
+
+
 
 
